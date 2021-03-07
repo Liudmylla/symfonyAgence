@@ -81,11 +81,11 @@ class AdminPropertyController extends AbstractController {
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function delete(Property $property, Request $request){
-        if($this->isCsrfTokenValid('delete' . $property->getId(), $request->get('_token'))):
+        if($this->isCsrfTokenValid('delete' . $property->getId(), $request->get('_token'))){ 
             $this->em->remove($property);
             $this->em->flush();
             $this->addFlash('success', 'La suppression a bien été prise en compte.');
-        endif;
+        }
         return $this->redirectToRoute('admin.property.index');
     }
 }
